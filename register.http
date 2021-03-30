@@ -1,0 +1,9 @@
+POST http://localhost:5000/user/register HTTP/1.1
+Content-Type: application/json
+Authorization:eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InNAcyIsImlkIjoiNjA1YWRkMTFkYTBkOTA1OTJkZWIyMzI5IiwiaWF0IjoxNjE2NTY3NTc1LCJleHAiOjE2NDgxMjUxNzV9.XgImbOFDZUEoO1HFG5H8wnJfdch_YCESKltUjVEpwo0
+
+{
+"name":"friend recieve",
+"email":"r@r",
+"password":"q"
+}
