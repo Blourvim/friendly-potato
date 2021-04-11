@@ -1,19 +1,21 @@
-import React, {useState} from 'react';
-import ReactDOM from 'react-dom';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import './style.css';
 
 
 const AnimeTable =()=>{
   const [items,setItems] = useState();
+  useEffect(()=>{
+  axios.get("https://api.jikan.moe/v3/top/anime/1/upcoming")
+  .then(response=>{
+    setItems(Object.entries(response.data.top))
+
+  })
+  },[])
+
 const removeItem =()=>{
 console.log("this.image_url")
 }
-  const fetchOnLoad = async()=>{
-    const response = await axios.get("https://api.jikan.moe/v3/top/anime/1/upcoming")
-    setItems(Object.entries(response.data.top))
-  }
-  fetchOnLoad()
 
 return(    
   <>

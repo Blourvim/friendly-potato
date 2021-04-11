@@ -1,10 +1,19 @@
 import React,{useState} from 'react';
-import axios from 'axios';
-import testt  from './AnimeData.js';
-import AnimeTable from './AnimeTable.js';
-
+import AnimeTable from './AnimeTable';
+import MenuAppBar from './MenuAppBar';
+import LandingPage from './LandingPage';
+import Register from'./Register';
+import SignUp from './Register';
+import Login from './Login';
+import SignOut from './SignOut';
+import AniList from './AniList';
 const App = ()=>{
-   return(AnimeTable())
+
+   return(
+      <>
+<AniList/>
+           </>
+      )
 }
 
 export default App;

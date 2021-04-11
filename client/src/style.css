@@ -1,31 +1,35 @@
 body {
-   padding:50px;
+   background-color:  #014785;
+   margin: 0vmin;
 }
 
 .anime-block-wrapper{
-    display: inline-grid;
-    grid-template-columns:repeat(3,280px) ;
-    grid-auto-rows: min-content;
-    grid-gap: 10px;
-    background-color: #fff;
+    display: grid;
+    grid-template-columns:repeat(auto-fill,minmax(200px,260px)) ;
+    grid-gap: 1.4rem;
     color: #444;
+    margin: 2rem;
+
 }
 
 
 .anime-block{
-    display: inline-block;
-    background-color: #444;
+    background-color: #577590;
     color: #fff;
     border-radius: 5px;
     font-size: 13px;
     text-align: center;
+    margin: 0vmin;
+    border:1px;
+    border-color: white;
+  box-shadow: turquoise;
 }
 
 .anime-image{
 border-radius: 5px;
-height: 15rem;
-
-display: block;
+width: 200px;
+height: 300px;
+object-fit: cover;
 margin-top: 17px;
 margin-left: auto;
 margin-right: auto;
@@ -33,5 +37,40 @@ margin-right: auto;
 
 .anime-title{
 display: block;
+padding-left: 4%;
+padding-right: 4%;
+padding-bottom: 4%;
+white-space: nowrap;
+overflow: hidden;
+text-overflow: ellipsis;
 
 }
+
+.top-navigation-bar{
+display: grid;
+background-color: #262626;
+ position: sticky;
+  top: 0;
+  width: 100%;
+  padding: 0vmin;
+} 
+
+
+.top-navigation-bar ul {
+    grid-template-columns:repeat(auto-fit,minmax(200px,260px)) ;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    
+    
+  }
+.top-navigation-bar  li {
+    float: left;
+    display: grid;
+  }
+.top-navigation-bar  a {
+    display: block;
+    padding: 8px;
+    background-color: #262626;
+  }
+  
