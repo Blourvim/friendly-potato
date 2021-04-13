@@ -20,68 +20,104 @@ const acceptFriendRequest = async () => {
   }
 };
 
+
+
 export const login = async (req, res) => {
-  const { email, password } = req.body;
-
-  try {
-    const oldUser = await UserModal.findOne({ email });
-    if (!oldUser) return res.status(404).json({ message: "User doesn't exist" });
-
-    bcrypt.compare(password, oldUser.password)
-      .then(results => {
-        if (results) {
-          const token = jwt.sign(
-            {
-              email: oldUser.email,
-              id: oldUser._id
-            },
-            secret, {
-            expiresIn: "1 year"
-          });
-
-          res.status(200).json({ result: oldUser, token, });
-          return;
-        }
-        return res.status(400).json({ message: "Invalid credentials" });
-
-      })
-
-  } catch (err) {
-    res.status(500).json({ message: "Something went wrong" });
-    return;
+  const fragment = req.body.headers;
+  const query = `query ( $search: String) {
+  User(id: 5164353, search: $search) {
+    id
+    name
+     siteUrl 
+  
   }
-};
+}`
+
+}
+try {
+  //check if anilist jwt is vailid
+  const url = 'https://graphql.anilist.co';
+  const accessToken = req.headers.bearer;
+  const options = {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer ' + accessToken,
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+    body: JSON.stringify({
+      query: query
+    })
+  };
+  axios(url, options)
+    .then(response => {
+      if (response.status > 300) {
+        const payload = {
+          sub: response.data.id,
+          iat: new Date(),
+        }
+        const options = {
+          expiresIn: "2 days"
+        }
+        jwt.sign(payload, secret, [options])
+          .then(token => res.headers.bearer.JSON(token))
+      }
+    })
+
+} catch (error) {
+  console.error(error)
+
+}
+
 
 //TODO 
 //should I check if the user is logged in ??
 export const register = async (req, res) => {
+  const url = 'https://graphql.anilist.co';
+  const accessToken = req.headers.Bearer;
+  const query = `
+  query($id:Int){
+  
+    
+    User(id: $id) {
+      id
+    	name    
+    }
+  }
+`
+  const variables = {
+    "id": Jwt.decode(req.headers.Bearer)
+      .then(result => result.sub)
+  }
+
+
+  const options = {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer ' + accessToken,
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    },
+    body: JSON.stringify({
+      query,
+      variables
+    })
+  };
+
+
   try {
-    //check if anilist jwt is vailid
-    const url = 'https://graphql.anilist.co';
-    const accessToken = req.headers.bearer;
-    const options = {
-      method: 'POST',
-      headers: {
-        'Authorization': 'Bearer ' + accessToken,
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-      },
-      body: JSON.stringify({
-        query: query
-      })
-    };
+
     axios(url, options)
       .then(result => {
         //if success 
-        if (result.status <=300 &&result.status >=200) { 
+        if (result.status <= 300 && result.status >= 200) {
 
-          const { id, name } = result.data.user;
-          if (await UserModal.exists({ id })) return res.status(409).json(
-            { message: "User already exists" });
+          const { anilistId, name } = result.data.user;
+          if (await UserModal.exists({ anilistId })) return res.status(409).json({ message: "User already exists" });
 
-            UserModal.create({ aniListId:id, name: name });
-            res.status(201).json({ message: "account created " });
-            return;
+          UserModal.create({ aniListId, name });
+          res.status(201).json({ message: "account created " });
+          return;
         }
       }).catch(err => console.error(err))
 

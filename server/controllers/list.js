@@ -17,6 +17,7 @@ export const suggest = async (req, res) => {
     //it probably defaults to the first user docs in DB ??
     const suggestedBy = await checkName(req);
     const {toFind} = req.body.wantedListOwnerId;
+    //TODO gotta change into anilist id for integration of new api
     await UserModal.findById(req.body.wantedListOwnerId).lean
     .then(async(user)=>{
             if(user.private===false){ 
