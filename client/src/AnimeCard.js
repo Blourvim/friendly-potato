@@ -9,10 +9,15 @@ const useStyles = makeStyles({
         width:'345px',
         borderRadius:'15px',
         paddingTop:'40px',
-        marginBottom:'40px'
-    },
+        marginBottom:'40px',
+        backgroundColor:'#9bc8dc'
+      },
     content:{
-      paddingBottom:'30px'
+      paddingBottom:'30px',
+      backgroundColor:'#9bc8dc',
+    color:'#36454f',
+
+
     },
     media:{
       width:'auto',

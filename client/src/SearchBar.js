@@ -18,16 +18,14 @@ const useStyles = makeStyles((theme) => ({
   listItem:{
     height:'60px',
     display:'flex',
-    marginTop:'15px',
-    background:'hsla(240, 100%, 50%, 0.1) ',
+    background:'hsla(240, 100%, 80%, 0.2) ',
     width:'60%',
+    marginTop:'14px',
     minWidth:'330px',
     borderRadius:'15px',
     borderTopLeftRadius:'60px',
     borderBottomLeftRadius:'60px', 
-    whiteSpace:'nowrap',
-    overflow:'hidden',
-    textOverflow:'ellipsis'
+   
   },
   avatar:{
       height:'60px',
@@ -35,16 +33,25 @@ const useStyles = makeStyles((theme) => ({
   },
   title:{
       marginTop:'14px',
-      marginLeft:'30px',
       fontSize:'1.3rem',
-      color:'#e5e4e2'
+      color:'#e5e4e2',
+      width:'90%',
+      whiteSpace:'nowrap',
+      overflow:'hidden',
+      textOverflow:'ellipsis'
   }
   ,ul:{
       padding:'0'
   },
   textField:{
       width:'35%',
-      minWidth:'330px'
+      minWidth:'330px',
+  },
+  text:{
+    marginBottom:'3rem',
+    color:'#36454f',
+    fontWeight:'bold'
+    
   }
   
 }));
@@ -83,7 +90,7 @@ const pickAnime=(e,animeInfo)=>{
     debounce((value) => {
       if(value.length >= 3){
 
-        axios.get(`https://api.jikan.moe/v3/search/anime?q=${value}`)
+        axios.get(`https://api.jikan.moe/v3/search/anime?q=${value}&genre=12&genre_exclude=0`)
         .then(res =>{setResult(Object.entries(res.data.results))
             console.log(res)
         
@@ -103,8 +110,10 @@ const pickAnime=(e,animeInfo)=>{
 
   return (
     <Container align='center' className={classes.suggestionContainer}>
+    <Typography className={classes.text} variant='h3'>Find Anime</Typography>
+
       <div>
-       <TextField className={classes.textField} id="filled-basic" onChange={(e)=>handleChange(e)} label="What to suggest" variant="filled" />
+       <TextField  className={classes.textField} id="filled-basic" onChange={(e)=>handleChange(e)} label="Type Here" variant="filled" />
 
         </div>
       <div>
