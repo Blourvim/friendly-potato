@@ -59,10 +59,12 @@ export default function SearchBar() {
   const [result,setResult]= useState(false);
   const [malId,setMalId]= useState(undefined);
   const [anime,setAnime]=useState(false);
+  const [state,setState]=useState(false);
 
 const pickAnime=(e,animeInfo)=>{
   console.log(e.target.firstChild.data);
-  setAnime({...animeInfo})
+  setAnime({...animeInfo});
+  setState(true)
   setResult(e.target.firstChild.data);
   e.target.value ="hello"
 }
@@ -70,16 +72,27 @@ const pickAnime=(e,animeInfo)=>{
     const { value } = e.target;
     setValue(value);
     handleSearch(value);
+  setResult(false)
+  setAnime(false)
+  setState(false)
+
+
 
   };
   const handleSearch = useCallback(
     debounce((value) => {
-      axios.get(`https://api.jikan.moe/v3/search/anime?q=${value}`)
+      if(value.length >= 3){
+
+        axios.get(`https://api.jikan.moe/v3/search/anime?q=${value}`)
         .then(res =>{setResult(Object.entries(res.data.results))
             console.log(res)
         
         } )
         .catch(err => console.error(err));
+
+
+      }
+
     }, 500),
     []
   );
@@ -112,8 +125,8 @@ const pickAnime=(e,animeInfo)=>{
 
           </li>)
       })}</ul>
-        {!Array.isArray(result)&&result}
-{anime &&
+        {}
+{state &&
 <AnimeCard info={anime}/>}
    </div> 
 
