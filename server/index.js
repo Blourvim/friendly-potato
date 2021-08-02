@@ -14,7 +14,6 @@ app.use('/',indexRoutes);
 app.use('/user',userRoutes);
 
 
-const MONGO_STRING = "mongodb+srv://admin:O7IfYLAGvWB9V2wO@cluster0.opexh.mongodb.net/movnet?retryWrites=true&w=majority&ssl=true";
 const PORT =  process.env.PORT || 5000;
 
 mongoose.connect(MONGO_STRING,{ useNewUrlParser: true,useUnifiedTopology: true  })
