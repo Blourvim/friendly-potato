@@ -6,8 +6,10 @@ import UserModal from "../Schemas/userSchema.js";
 const secret = 'test';
 const updateOptions = { safe: true, upsert: true, new: true, useFindAndModify: false }
 
-const acceptFriendRequest = async () => {
+export const acceptFriendRequest = async (req,res) => {
+  if(!res.locals.loggedIn) return
   try {
+    const clientFriendList =  UserModal.findByIdAndUpdate
 
     UserModal.findByIdAndUpdate(clientId, { $push: { friends: targetUser._id } }, { updateOptions });
     UserModal.findByIdAndUpdate(wantedUserId, { $push: { friends: clientId } }, { updateOptions });
@@ -107,13 +109,13 @@ export const register = async (req, res) => {
 
   try {
 
-    axios(url, options)
+    axios (url, options)
       .then(result => {
         //if success 
         if (result.status <= 300 && result.status >= 200) {
 
           const { anilistId, name } = result.data.user;
-          if (await UserModal.exists({ anilistId })) return res.status(409).json({ message: "User already exists" });
+          if (UserModal.exists({ anilistId })) return res.status(409).json({ message: "User already exists" });
 
           UserModal.create({ aniListId, name });
           res.status(201).json({ message: "account created " });

@@ -2,6 +2,7 @@ import React,{useState,useCallback} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import Container from '@material-ui/core/Container';
 import axios from 'axios';
 import debounce from 'lodash.debounce';
 const useStyles = makeStyles((theme) => ({
@@ -11,6 +12,16 @@ const useStyles = makeStyles((theme) => ({
       width: '25ch',
     },
   },
+  suggestionContainer:{
+ 
+    borderStyle:'solid',
+    borderWidth:'2px',
+  },
+  suggestionForm:{
+  display:'block',
+  borderStyle:'solid',
+  borderWidth:'2px',}
+  
 }));
 
 
@@ -29,11 +40,7 @@ const pickAnime=(e,mal_id)=>{
   setMalId(mal_id);
   setResult(e.target.firstChild.data);
   e.target.value ="hello"
-
-
 }
-
-
   const handleChange = (e) => {
     const { value } = e.target;
     setValue(value);
@@ -79,11 +86,16 @@ const pickAnime=(e,mal_id)=>{
   }
 
   return (
-    <form key="form-for-stuff" onSubmit={(e)=>handleSubmit(e)} className={classes.root} noValidate autoComplete="off">
-      <TextField id="filled-basic" label="Suggestion to" variant="filled" />
-      <TextField id="filled-basic" onChange={(e)=>handleChange(e)} label="What to suggest" variant="filled" />
-           <TextField id="filled-basic" label="suggested by" variant="filled" />
-        <TextField
+    <div className={classes.suggestionContainer}>
+    <form key="form-for-stuff" onSubmit={(e)=>handleSubmit(e)} className={classes.suggestionForm} noValidate autoComplete="off">
+      <div>
+       <TextField id="filled-basic" onChange={(e)=>handleChange(e)} label="What to suggest" variant="filled" />
+
+        <TextField id="filled-basic" label="Suggestion to" variant="filled" />
+        <TextField id="filled-basic" label="suggested by" variant="filled" />
+        </div>
+      <div>
+      <TextField
           id="outlined-multiline-static"
           label="Suggestion Text"
           multiline
@@ -91,9 +103,8 @@ const pickAnime=(e,mal_id)=>{
           rows={4}
           variant="outlined"
         />
-         <Button type='submit' variant="contained" color="primary">Suggest</Button>
-
-         <ul>{Array.isArray(result)&&result.map((item)=>{          
+   <Button type='submit' variant="contained" color="primary">Suggest</Button>
+   <ul>{Array.isArray(result)&&result.slice([0], [10]).map((item)=>{          
         const {mal_id,title} = item[1];    
         return(
         <li 
@@ -105,8 +116,14 @@ const pickAnime=(e,mal_id)=>{
 
           </li>)
       })}</ul>
-      <div>{!Array.isArray(result)&&result}</div>
+        {!Array.isArray(result)&&result}
 
-           </form>
-  );
+   </div> 
+         </form>
+
+
+         
+
+           </div>);           
+
 }
