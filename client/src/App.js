@@ -7,11 +7,12 @@ import SignUp from './Register';
 import Login from './Login';
 import SignOut from './SignOut';
 import AniList from './AniList';
+import SearchBar from './SearchBar';
 const App = ()=>{
 
    return(
       <>
-<LandingPage/>
+<SearchBar/>
            </>
       )
 }
