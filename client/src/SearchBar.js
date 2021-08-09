@@ -90,8 +90,9 @@ const pickAnime=(e,animeInfo)=>{
     debounce((value) => {
       if(value.length >= 3){
 
-        axios.get(`https://api.jikan.moe/v3/search/anime?q=${value}&page=1&genre=12&genre_exclude=0`)
-        .then(res =>{setResult(Object.entries(res.data.results))
+        axios.get(`https://api.jikan.moe/v4/anime?q=${value}`)
+        .then(res =>{
+          setResult(Object.entries(res.data.data))
             console.log(res)
         
         } )
@@ -119,15 +120,16 @@ const pickAnime=(e,animeInfo)=>{
       <div>
 
    <ul className={classes.ul}>{Array.isArray(result)&&result.slice([0], [10]).map((item)=>{          
-        const {mal_id,title,image_url,url,synopsis} = item[1];    
+        const {mal_id,title,images,url,synopsis} = item[1];  
+        const animeImage = images.jpg.image_url  
         return(
         <li 
         id={mal_id}
-        onClick={(e)=>pickAnime(e,{mal_id,title,image_url,url,synopsis})}
+        onClick={(e)=>pickAnime(e,{mal_id,title,animeImage,url,synopsis})}
         key={mal_id}
         className={classes.listItem}
         >
-            <Avatar className={classes.avatar} src={image_url}>
+            <Avatar className={classes.avatar} src={animeImage}>
 
             </Avatar>
           <Typography className={classes.title}>{title}</Typography>
