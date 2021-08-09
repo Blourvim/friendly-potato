@@ -38,7 +38,9 @@ const useStyles = makeStyles((theme) => ({
       width:'90%',
       whiteSpace:'nowrap',
       overflow:'hidden',
-      textOverflow:'ellipsis'
+      textOverflow:'ellipsis',
+      marginLeft:'15px',
+      marginRight:'15px'
   }
   ,ul:{
       padding:'0'
@@ -64,7 +66,6 @@ const useStyles = makeStyles((theme) => ({
 export default function SearchBar() {
   const [value, setValue] = useState("");
   const [result,setResult]= useState(false);
-  const [malId,setMalId]= useState(undefined);
   const [anime,setAnime]=useState(false);
   const [state,setState]=useState(false);
 
@@ -79,7 +80,6 @@ const pickAnime=(e,animeInfo)=>{
     const { value } = e.target;
     setValue(value);
     handleSearch(value);
-  setResult(false)
   setAnime(false)
   setState(false)
 
