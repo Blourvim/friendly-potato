@@ -70,7 +70,6 @@ export default function SearchBar() {
   const [state,setState]=useState(false);
 
 const pickAnime=(e,animeInfo)=>{
-  console.log(e.target.firstChild.data);
   setAnime({...animeInfo});
   setState(true)
   setResult(e.target.firstChild.data);
@@ -93,8 +92,6 @@ const pickAnime=(e,animeInfo)=>{
         axios.get(`https://api.jikan.moe/v4/anime?q=${value}`)
         .then(res =>{
           setResult(Object.entries(res.data.data))
-            console.log(res)
-        
         } )
         .catch(err => console.error(err));
 
