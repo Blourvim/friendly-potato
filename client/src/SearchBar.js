@@ -79,9 +79,9 @@ const pickAnime=(e,animeInfo)=>{
     const { value } = e.target;
     setValue(value);
     handleSearch(value);
-  setResult(false)
-  setAnime(false)
-  setState(false)
+    setResult(false)
+    setAnime(false)
+    setState(false)
 
 
 
