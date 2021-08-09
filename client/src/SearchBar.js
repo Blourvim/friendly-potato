@@ -119,12 +119,13 @@ const pickAnime=(e,animeInfo)=>{
         </div>
       <div>
 
-   <ul className={classes.ul}>{Array.isArray(result)&&result.slice([0], [10]).map((item)=>{          
+
+   <ul className={classes.ul}>{
+   Array.isArray(result)&&result.slice([0], [10]).map((item)=>{          
         const {mal_id,title,images,url,synopsis} = item[1];  
         const animeImage = images.jpg.image_url  
         return(
         <li 
-        id={mal_id}
         onClick={(e)=>pickAnime(e,{mal_id,title,animeImage,url,synopsis})}
         key={mal_id}
         className={classes.listItem}
@@ -136,7 +137,6 @@ const pickAnime=(e,animeInfo)=>{
 
           </li>)
       })}</ul>
-        {}
 {state &&
 <AnimeCard info={anime}/>}
    </div> 
