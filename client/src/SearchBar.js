@@ -90,7 +90,7 @@ const pickAnime=(e,animeInfo)=>{
     debounce((value) => {
       if(value.length >= 3){
 
-        axios.get(`https://api.jikan.moe/v3/search/anime?q=${value}&genre=12&genre_exclude=0`)
+        axios.get(`https://api.jikan.moe/v3/search/anime?q=${value}&page=1&genre=12&genre_exclude=0`)
         .then(res =>{setResult(Object.entries(res.data.results))
             console.log(res)
         
