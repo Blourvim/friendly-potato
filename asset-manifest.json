@@ -1,20 +1,20 @@
 {
   "files": {
     "main.css": "/friendly-potato/static/css/main.41613b65.chunk.css",
-    "main.js": "/friendly-potato/static/js/main.a9a96007.chunk.js",
-    "main.js.map": "/friendly-potato/static/js/main.a9a96007.chunk.js.map",
+    "main.js": "/friendly-potato/static/js/main.d5d460be.chunk.js",
+    "main.js.map": "/friendly-potato/static/js/main.d5d460be.chunk.js.map",
     "runtime-main.js": "/friendly-potato/static/js/runtime-main.2bc704de.js",
     "runtime-main.js.map": "/friendly-potato/static/js/runtime-main.2bc704de.js.map",
-    "static/js/2.b2c163e2.chunk.js": "/friendly-potato/static/js/2.b2c163e2.chunk.js",
-    "static/js/2.b2c163e2.chunk.js.map": "/friendly-potato/static/js/2.b2c163e2.chunk.js.map",
+    "static/js/2.53b9ae38.chunk.js": "/friendly-potato/static/js/2.53b9ae38.chunk.js",
+    "static/js/2.53b9ae38.chunk.js.map": "/friendly-potato/static/js/2.53b9ae38.chunk.js.map",
     "index.html": "/friendly-potato/index.html",
     "static/css/main.41613b65.chunk.css.map": "/friendly-potato/static/css/main.41613b65.chunk.css.map",
-    "static/js/2.b2c163e2.chunk.js.LICENSE.txt": "/friendly-potato/static/js/2.b2c163e2.chunk.js.LICENSE.txt"
+    "static/js/2.53b9ae38.chunk.js.LICENSE.txt": "/friendly-potato/static/js/2.53b9ae38.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.2bc704de.js",
-    "static/js/2.b2c163e2.chunk.js",
+    "static/js/2.53b9ae38.chunk.js",
     "static/css/main.41613b65.chunk.css",
-    "static/js/main.a9a96007.chunk.js"
+    "static/js/main.d5d460be.chunk.js"
   ]
 }
