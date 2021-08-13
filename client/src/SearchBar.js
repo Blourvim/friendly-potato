@@ -25,7 +25,10 @@ const useStyles = makeStyles((theme) => ({
     borderRadius:'15px',
     borderTopLeftRadius:'60px',
     borderBottomLeftRadius:'60px', 
-    cursor:'pointer'
+    cursor:'pointer',
+    '&:hover': {
+      background: "hsla(240, 100%, 90%, 0.2)",
+   },
    
   },
   avatar:{
@@ -74,7 +77,6 @@ const pickAnime=(e,animeInfo)=>{
   setAnime({...animeInfo});
   setState(true)
   setResult(e.target.firstChild.data);
-  e.target.value ="hello"
 }
   const handleChange = (e) => {
     const { value } = e.target;
