@@ -10,7 +10,7 @@ import AnimeCard from './AnimeCard';
 const useStyles = makeStyles((theme) => ({
   
   suggestionContainer:{
-        marginTop:'100px',
+        marginTop:'40px',
         padding:'0px'
 
 
@@ -36,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
       width:'60px'
   },
   title:{
-      marginTop:'14px',
       fontSize:'1.3rem',
       color:'#e5e4e2',
       width:'90%',
