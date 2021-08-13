@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius:'15px',
     borderTopLeftRadius:'60px',
     borderBottomLeftRadius:'60px', 
+    cursor:'pointer'
    
   },
   avatar:{
