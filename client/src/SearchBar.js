@@ -10,7 +10,7 @@ import AnimeCard from './AnimeCard';
 const useStyles = makeStyles((theme) => ({
   
   suggestionContainer:{
-        marginTop:'100px',
+        marginTop:'40px',
         padding:'0px'
 
 
@@ -25,6 +25,10 @@ const useStyles = makeStyles((theme) => ({
     borderRadius:'15px',
     borderTopLeftRadius:'60px',
     borderBottomLeftRadius:'60px', 
+    cursor:'pointer',
+    '&:hover': {
+      background: "hsla(240, 100%, 90%, 0.2)",
+   },
    
   },
   avatar:{
@@ -32,7 +36,6 @@ const useStyles = makeStyles((theme) => ({
       width:'60px'
   },
   title:{
-      marginTop:'14px',
       fontSize:'1.3rem',
       color:'#e5e4e2',
       width:'90%',
@@ -73,14 +76,14 @@ const pickAnime=(e,animeInfo)=>{
   setAnime({...animeInfo});
   setState(true)
   setResult(e.target.firstChild.data);
-  e.target.value ="hello"
 }
   const handleChange = (e) => {
     const { value } = e.target;
     setValue(value);
     handleSearch(value);
-  setAnime(false)
-  setState(false)
+    setResult(false)
+    setAnime(false)
+    setState(false)
 
 
 
