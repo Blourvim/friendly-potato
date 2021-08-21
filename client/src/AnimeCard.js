@@ -32,7 +32,7 @@ const AnimeCard =(props)=>{
 
     const classes = useStyles()
 console.log(props)
-const {mal_id,image_url,title,url,synopsis} = props.info
+const {mal_id,animeImage,title,url,synopsis} = props.info
 return(
     <Card className={classes.root}>
       <a href={url} rel='noreferrer'target='_blank'>
@@ -41,7 +41,7 @@ return(
         component="img"
         alt={title}
         height="auto"
-        image={image_url}
+        image={animeImage}
         title={title}
         className={classes.media}
       />
