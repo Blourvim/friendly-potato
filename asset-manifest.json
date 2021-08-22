@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/friendly-potato/static/css/main.41613b65.chunk.css",
-    "main.js": "/friendly-potato/static/js/main.d5d460be.chunk.js",
-    "main.js.map": "/friendly-potato/static/js/main.d5d460be.chunk.js.map",
+    "main.js": "/friendly-potato/static/js/main.14417b1a.chunk.js",
+    "main.js.map": "/friendly-potato/static/js/main.14417b1a.chunk.js.map",
     "runtime-main.js": "/friendly-potato/static/js/runtime-main.2bc704de.js",
     "runtime-main.js.map": "/friendly-potato/static/js/runtime-main.2bc704de.js.map",
     "static/js/2.53b9ae38.chunk.js": "/friendly-potato/static/js/2.53b9ae38.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.2bc704de.js",
     "static/js/2.53b9ae38.chunk.js",
     "static/css/main.41613b65.chunk.css",
-    "static/js/main.d5d460be.chunk.js"
+    "static/js/main.14417b1a.chunk.js"
   ]
 }
